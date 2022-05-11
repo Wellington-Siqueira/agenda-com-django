@@ -1,6 +1,8 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from core.models import Evento
 
 # Create your views here.
 def inicio(request):
-    return HttpResponse("Inicio")
+    eventos = Evento.objects.all()
+    dados = {'eventos':eventos}
+    return render(request, "agenda.html", dados)
