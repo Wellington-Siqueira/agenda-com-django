@@ -12,7 +12,7 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <h1 class="text-white">Agendamentos</h1>
+        <h1 class="text-white">Agenda</h1>
         <div>
             <a class="navbar-brand" href="/logout">Sair</a>
             <a class="navbar-brand" href="evento/">Criar</a>
@@ -25,9 +25,14 @@
             <div class="card-body d-inline p-2 bg-dark text-white rounded shadow">
                 <h5 class="card-title">{{evento.titulo}}</h5>
                 <h6 class="card-subtitle mb-2 text-muted">{{evento.data_evento}}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Local: {{evento.local}}</h6>
                 <p class="card-text">{{evento.descricao}}</p>
-                <a href="/" class="card-link">Link do card</a>
-                <a href="/" class="card-link">Outro link</a>
+                <a href="evento/delete/{{ evento.id }}">
+                    <button type="button" class="btn btn-danger">Excluir</button>
+                </a>
+                <a href="evento/?id={{ evento.id }}">
+                    <button type="button" class="btn btn-primary">Editar</button>
+                </a>
             </div>
         </div>
         {% endfor %}

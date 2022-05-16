@@ -19,17 +19,22 @@
         </div>
     </nav>
     <form class="m-4" action="submit" method="post">{% csrf_token %}
+        <input type="number" name="id_evento" value="{{ eventos.id }}" hidden>
         <div class="form-group">
             <label for="exampleFormControlInput1">Titulo</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="titulo">
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="titulo" value="{{ eventos.titulo }}">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Local</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="local" value="{{ eventos.local }}">
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput1">Data</label>
-            <input type="datetime-local" class="form-control" id="exampleFormControlInput1" name="data_evento">
+            <input type="datetime-local" class="form-control" id="exampleFormControlInput1" name="data_evento" value="{{ eventos.get_data_input_evento }}">
         </div>
         <div class="form-group">
             <label for="exampleFormControlTextarea1">Descrição</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="descricao"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="descricao">{{ eventos.descricao }}</textarea>
         </div>
         <div class="d-flex justify-content-center">
             <button type="submit" class="btn btn-outline-primary mx-4">Salvar</button>
