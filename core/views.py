@@ -10,7 +10,8 @@ from django.contrib import messages
 def inicio(request):
     usuario = request.user
     eventos = Evento.objects.filter(usuario=usuario)
-    dados = {'eventos':eventos}
+    dados = {'eventos':eventos, 'usuario':usuario}
+    print(dados.values)
     return render(request, "agenda.html", dados)
 
 def login_usuario(request):
@@ -33,4 +34,20 @@ def submit_login(request):
 
 def logout_user(request):
     logout(request)
+    return redirect('/')
+
+@login_required(login_url='/login/')
+def evento(request):
+    return render(request, 'evento.html')
+
+@login_required(login_url='/login/')
+def submit_evento(request):
+    if request.POST:
+        titulo = request.POST.get('titulo')
+        data_evento = request.POST.get('data_evento')
+        descricao = request.POST.get('descricao')
+        usuario = request.user
+
+        Evento.objects.create(titulo=titulo, descricao=descricao, data_evento=data_evento, usuario=usuario)
+
     return redirect('/')
