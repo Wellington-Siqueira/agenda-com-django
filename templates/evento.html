@@ -12,10 +12,10 @@
 
 <body>
     <nav class="navbar navbar-dark bg-dark">
-        <h1 class="text-white">Evento</h1>
+        <h1 class="text-white">Bem vindo <span class="text-white text-capitalize">{{ request.user.username }}</span></h1>
         <div>
-            <a class="navbar-brand" href="/logout">Sair</a>
             <a class="navbar-brand" href="evento/">Criar</a>
+            <a class="navbar-brand" href="/logout">Sair</a>
         </div>
     </nav>
     <form class="m-4" action="submit" method="post">{% csrf_token %}
